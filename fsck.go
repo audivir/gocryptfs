@@ -7,7 +7,9 @@ import (
 	"os"
 	"os/signal"
 	"path/filepath"
+	"runtime"
 	"sort"
+	"strings"
 	"sync"
 	"syscall"
 
@@ -235,6 +237,12 @@ func (ck *fsckObj) xattrs(relPath string) {
 	go ck.watchMitigatedCorruptionsListXAttr(relPath)
 	attrs, err := syscallcompat.Llistxattr(ck.abs(relPath))
 	ck.watchDone <- struct{}{}
+	if err == syscall.EPERM && runtime.GOOS == "darwin" && strings.HasPrefix(filepath.Base(relPath), "._") {
+		// The macOS NFS client (used by FUSE-T) refuses xattr calls on
+		// AppleDouble "._" files. They cannot have xattrs, so there is
+		// nothing to check.
+		return
+	}
 	if err != nil {
 		fmt.Printf("fsck: error listing xattrs on %q: %v\n", relPath, err)
 		ck.markCorrupt(relPath)
