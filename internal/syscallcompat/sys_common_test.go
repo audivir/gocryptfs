@@ -325,3 +325,20 @@ func BenchmarkLgetxattr(b *testing.B) {
 		Lgetxattr("/", "user.this.attr.does.not.exist")
 	}
 }
+
+// TestListxattrSmartBufError checks that errors other than ERANGE are
+// returned instead of slicing the buffer with the -1 the syscall
+// returned (which panicked).
+func TestListxattrSmartBufError(t *testing.T) {
+	for _, errno := range []error{syscall.EPERM, syscall.ENOTSUP, syscall.EIO} {
+		attrs, err := listxattrSmartBuf(func([]byte) (int, error) {
+			return -1, errno
+		})
+		if err != errno {
+			t.Errorf("errno %v: got err=%v, want %v", errno, err, errno)
+		}
+		if attrs != nil {
+			t.Errorf("errno %v: got attrs=%v, want nil", errno, attrs)
+		}
+	}
+}

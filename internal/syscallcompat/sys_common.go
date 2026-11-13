@@ -218,6 +218,8 @@ func listxattrSmartBuf(listxattrSyscall func([]byte) (int, error)) ([]string, er
 			// we could fail with ERANGE. This is ok as the caller will retry.
 			return nil, err
 		}
+	} else if err != nil {
+		return nil, err
 	}
 	return parseListxattrBlob(buf[:sz]), nil
 }
