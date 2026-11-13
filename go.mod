@@ -15,3 +15,5 @@ require (
 	golang.org/x/term v0.47.0
 	golang.org/x/text v0.43.0
 )
+
+replace github.com/hanwen/go-fuse/v2 => github.com/audivir/go-fuse/v2 v2.0.0-20261113181635-4b6777659d8b
