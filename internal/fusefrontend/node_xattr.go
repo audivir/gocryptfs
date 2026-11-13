@@ -90,7 +90,7 @@ func (n *Node) Setxattr(ctx context.Context, attr string, data []byte, flags uin
 	// ACLs are passed through without encryption
 	if isAcl(attr) {
 		// result of setting an acl depends on the user doing it
-		var context *fuse.Context
+		var context *fuse.Caller
 		if rn.args.PreserveOwner {
 			context = toFuseCtx(ctx)
 		}

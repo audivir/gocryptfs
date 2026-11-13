@@ -12,17 +12,16 @@ import (
 	"github.com/rfjakob/gocryptfs/v2/internal/tlog"
 )
 
-// toFuseCtx tries to extract a fuse.Context from a generic context.Context.
-func toFuseCtx(ctx context.Context) (ctx2 *fuse.Context) {
+// toFuseCtx tries to extract the fuse.Caller from a generic context.Context.
+// It returns nil if ctx carries no caller.
+func toFuseCtx(ctx context.Context) *fuse.Caller {
 	if ctx == nil {
 		return nil
 	}
 	if caller, ok := fuse.FromContext(ctx); ok {
-		ctx2 = &fuse.Context{
-			Caller: *caller,
-		}
+		return &caller
 	}
-	return ctx2
+	return nil
 }
 
 // toNode casts a generic fs.InodeEmbedder into *Node. Also handles *RootNode

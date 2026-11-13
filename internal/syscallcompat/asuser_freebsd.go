@@ -15,7 +15,7 @@ import (
 //
 // FreeBSD does not support changing uid/gid per thread. If context is not nil,
 // an error is returned.
-func asUser(f func() (int, error), context *fuse.Context) (int, error) {
+func asUser(f func() (int, error), context *fuse.Caller) (int, error) {
 	if context == nil {
 		return f()
 	}

@@ -34,7 +34,7 @@ func (n *Node) getXAttr(cAttr string) (out []byte, errno syscall.Errno) {
 	return cData, 0
 }
 
-func (n *Node) setXAttr(context *fuse.Context, cAttr string, cData []byte, flags uint32) (errno syscall.Errno) {
+func (n *Node) setXAttr(context *fuse.Caller, cAttr string, cData []byte, flags uint32) (errno syscall.Errno) {
 	dirfd, cName, errno := n.prepareAtSyscallMyself()
 	if errno != 0 {
 		return
