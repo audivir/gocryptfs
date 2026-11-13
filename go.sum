@@ -1,7 +1,7 @@
 github.com/aperturerobotics/jacobsa-crypto v1.1.0 h1:0hig54FMzU80OHrqSfqmj/W8HydRymVdz2K6D9Guffs=
 github.com/aperturerobotics/jacobsa-crypto v1.1.0/go.mod h1:buWU1iY+FjIcfpb1aYfFJZfl07WlS7O30lTyC2iwjv8=
-github.com/audivir/go-fuse/v2 v2.0.0-20261113181635-4b6777659d8b h1:ok/Hif2RbObfzxKDVrLHMx4uZgk/HQsLmf3V5i2fjzI=
-github.com/audivir/go-fuse/v2 v2.0.0-20261113181635-4b6777659d8b/go.mod h1:Jhm1VRAQoI4MYiawzVhc0K3StCLBob07TTT37CwmNpM=
+github.com/audivir/go-fuse/v2 v2.0.0-20261113183701-c7cfabc70c46 h1:/ASoXsGsTHVZ2K/nBTrlVKb63JNFM9BXNbMEq2S1lpA=
+github.com/audivir/go-fuse/v2 v2.0.0-20261113183701-c7cfabc70c46/go.mod h1:eyKZNQgcAD0QZZLWIYzaNPAsj8fVpqc3G+OH0LfvDyM=
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/jacobsa/oglematchers v0.0.0-20150720000706-141901ea67cd h1:9GCSedGjMcLZCrusBZuo4tyKLpKUPenUUqi34AkuFmA=
